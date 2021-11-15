@@ -1,6 +1,8 @@
 package com.br.elit.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -14,29 +16,45 @@ public class ReportModel {
     private int id;
 
     @Column
+    @NotNull(message = "The creation date is mandatory")
     private Date creationAt;
 
     @Column
-    private String temperature;
+    @Size(min = 1, max = 2, message = "The pH value must have 2 digits")
+    private double ph;
 
     @Column
-    private String turbidity;
+    private String phStatus;
 
     @Column
-    private String alkalinity;
+    @Size(min = 1, max = 4, message = "The temperature must respect the following standard: '21.4'")
+    private double temperature;
 
     @Column
+    @Size(min = 1, max = 1, message = "The turbidity must have at least 1 digit")
+    private double turbidity;
+
+    @Column
+    @Size(min = 1, max = 3, message = "The alkalinity value must have between 1-3 digits")
+    private double alkalinity;
+
+    @Column
+    @Size(min = 1, max = 1, message = "")
     private String chlorides;
 
     @Column
+    @Size(min = 1, max = 1, message = "")
     private String coliforms;
 
     @Column
+    @Size(min = 1, max = 1, message = "")
     private String seaweed;
 
-    public ReportModel(Date creationAt, String temperature, String turbidity, String alkalinity, String chlorides, String coliforms, String seaweed) {
+    public ReportModel(Date creationAt, double ph, double temperature, double turbidity, double alkalinity, String chlorides, String coliforms, String seaweed) {
         this.creationAt = creationAt;
+        this.ph = ph;
         this.temperature = temperature;
+
         this.turbidity = turbidity;
         this.alkalinity = alkalinity;
         this.chlorides = chlorides;
@@ -63,27 +81,43 @@ public class ReportModel {
         this.creationAt = creationAt;
     }
 
-    public String getTemperature() {
+    public double getPh() {
+        return ph;
+    }
+
+    public void setPh(double temperature) {
+        this.temperature = ph;
+    }
+
+    public String getPhStatus(){
+        return phStatus;
+    }
+
+    public void setPhStatus(String phStatus){
+        this.phStatus = phStatus;
+    }
+
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(String temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
-    public String getTurbidity() {
+    public double getTurbidity() {
         return turbidity;
     }
 
-    public void setTurbidity(String turbidity) {
+    public void setTurbidity(double turbidity) {
         this.turbidity = turbidity;
     }
 
-    public String getAlkalinity() {
+    public double getAlkalinity() {
         return alkalinity;
     }
 
-    public void setAlkalinity(String alkalinity) {
+    public void setAlkalinity(double alkalinity) {
         this.alkalinity = alkalinity;
     }
 

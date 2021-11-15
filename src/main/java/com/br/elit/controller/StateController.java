@@ -30,7 +30,7 @@ public class StateController {
 
         return ResponseEntity.created(location).build();
 
-    }
+    }   
 
     @GetMapping
     @ApiOperation(value = "Retorna uma lista de todos os estados")

@@ -1,6 +1,10 @@
 package com.br.elit.models;
 
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "SENSORS")
@@ -13,12 +17,19 @@ public class SensorModel {
     private int id;
 
     @Column
+    @NotNull(message = "The is mandatory")
+    private boolean isActivated;
+
+    @Column
+    @NotNull(message = "The sensor's serial number is mandatory")
     private String serialNumber;
 
     @Column
+    @Size(min = 1, max = 30, message = "The material must have between 1 and 30 characters")
     private String material;
 
     @Column
+    @Size(min = 1, max = 30, message = "The manufacturer name must have between 1 and 30 characters")
     private String manufacturer;
 
     public SensorModel(String serialNumber, String material, String manufacturer) {
