@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public interface StateService {
 
-    ResponseEntity<StateModel> createState(StateModel state);
     List<StateModel> getAll();
+    StateModel createState(StateModel state);
+    StateModel updateState(StateModel state);
     Optional<StateModel> getById(int id);
-//    ResponseEntity<StateModel> updateState(StateModel state);
-//    ResponseEntity<Void> deleteState(String name);
+    ResponseEntity<Void> deleteById(int id);
 
 
 

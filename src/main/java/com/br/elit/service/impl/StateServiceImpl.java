@@ -1,5 +1,6 @@
 package com.br.elit.service.impl;
 
+import com.br.elit.models.SensorModel;
 import com.br.elit.models.StateModel;
 import com.br.elit.repository.StateRepository;
 import com.br.elit.service.StateService;
@@ -15,7 +16,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("StateService")
-@Transactional
 public class StateServiceImpl implements StateService {
 
     Logger logger = Logger.getLogger(this.getClass());
@@ -23,39 +23,31 @@ public class StateServiceImpl implements StateService {
     @Autowired
     private StateRepository stateRepository;
 
-    public ResponseEntity<StateModel> createState(StateModel state) {
-
-        logger.info(String.format("Saving new state: %s on database", state.getName()));
-
-        stateRepository.save(state);
-
-        return ResponseEntity.created(null).body(stateRepository.save(state));
-    }
-
+    @Override
     public List<StateModel> getAll() {
         return stateRepository.findAll();
     }
 
+    @Override
     public Optional<StateModel> getById(int id) {
         
         return stateRepository.findById(id);
 
     }
+    @Override
+    public StateModel createState(StateModel state) {
+        return stateRepository.save(state);
+    }
 
-//    public List<StateModel> updateState(StateModel state) {
-//
-//        Optional<StateModel> optState  = stateRepository.findById(state.getId());
-//
-//
-//
-//
-//        int id = stateRepository. findById(state.getId());
-//
-//    }
+    @Override
+    public StateModel updateState(StateModel state) {
+        return stateRepository.save(state);
+    }
 
-
-
-
-
+    @Override
+    public ResponseEntity<Void> deleteById(int stateId) {
+        stateRepository.deleteById(stateId);
+        return null;
+    }
 
 }

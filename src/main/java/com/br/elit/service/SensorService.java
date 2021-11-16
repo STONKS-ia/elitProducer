@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface SensorService {
-    ResponseEntity<SensorModel> createSensor(SensorModel sensor);
+
     List<SensorModel> getAll();
-    ResponseEntity<Void> deleteSensor(String sensorId);
-
-
+    SensorModel createSensor(SensorModel sensor);
+    SensorModel updateSensor(SensorModel sensor);
+    ResponseEntity<Void> deleteSensor(int sensorId);
 
 }
