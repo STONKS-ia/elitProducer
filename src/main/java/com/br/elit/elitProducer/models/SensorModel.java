@@ -1,6 +1,4 @@
-package com.br.elit.models;
-
-import org.springframework.boot.context.properties.bind.DefaultValue;
+package com.br.elit.elitProducer.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -31,6 +29,8 @@ public class SensorModel {
     @Column
     @Size(min = 1, max = 30, message = "The manufacturer name must have between 1 and 30 characters")
     private String manufacturer;
+
+    private StateModel state;
 
     public SensorModel(String serialNumber, String material, String manufacturer) {
         this.serialNumber = serialNumber;

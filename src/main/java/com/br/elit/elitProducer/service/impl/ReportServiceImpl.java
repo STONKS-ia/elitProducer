@@ -1,8 +1,8 @@
-package com.br.elit.service.impl;
+package com.br.elit.elitProducer.service.impl;
 
-import com.br.elit.models.ReportModel;
-import com.br.elit.repository.ReportRepository;
-import com.br.elit.service.ReportService;
+import com.br.elit.elitProducer.models.ReportModel;
+import com.br.elit.elitProducer.repository.ReportRepository;
+import com.br.elit.elitProducer.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

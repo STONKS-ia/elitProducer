@@ -1,18 +1,14 @@
-package com.br.elit.controller;
+package com.br.elit.elitProducer.controller;
 
-import com.br.elit.models.ReportModel;
-import com.br.elit.models.SensorModel;
-import com.br.elit.repository.SensorRepository;
-import com.br.elit.service.SensorService;
+import com.br.elit.elitProducer.models.SensorModel;
+import com.br.elit.elitProducer.service.SensorService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.net.URI;
 import java.util.List;
 

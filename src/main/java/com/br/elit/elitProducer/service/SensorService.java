@@ -1,6 +1,6 @@
-package com.br.elit.service;
+package com.br.elit.elitProducer.service;
 
-import com.br.elit.models.SensorModel;
+import com.br.elit.elitProducer.models.SensorModel;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

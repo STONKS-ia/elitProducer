@@ -36,7 +36,7 @@ public class ElitProducerApplication {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("br.com.fiap.controller"))
+				.apis(RequestHandlerSelectors.basePackage("br.com.elit.controller"))
 				.paths(PathSelectors.any())
 				.build();
 	}

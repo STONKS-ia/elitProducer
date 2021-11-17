@@ -1,4 +1,4 @@
-package com.br.elit.models;
+package com.br.elit.elitProducer.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

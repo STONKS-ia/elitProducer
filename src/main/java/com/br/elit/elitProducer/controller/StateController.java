@@ -1,12 +1,10 @@
-package com.br.elit.controller;
+package com.br.elit.elitProducer.controller;
 
-import com.br.elit.models.SensorModel;
-import com.br.elit.models.StateModel;
-import com.br.elit.service.StateService;
+import com.br.elit.elitProducer.models.StateModel;
+import com.br.elit.elitProducer.service.StateService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

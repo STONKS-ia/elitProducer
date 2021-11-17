@@ -1,11 +1,10 @@
-package com.br.elit.controller;
+package com.br.elit.elitProducer.controller;
 
-import com.br.elit.models.ReportModel;
-import com.br.elit.service.ReportService;
+import com.br.elit.elitProducer.models.ReportModel;
+import com.br.elit.elitProducer.service.ReportService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

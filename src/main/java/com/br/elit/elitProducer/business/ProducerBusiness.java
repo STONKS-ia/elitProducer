@@ -1,7 +1,6 @@
-package com.br.elit.business;
+package com.br.elit.elitProducer.business;
 
-import com.br.elit.dto.ReportRequestDTO;
-import com.br.elit.models.ReportModel;
+import com.br.elit.elitProducer.models.ReportModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +11,6 @@ public class ProducerBusiness {
         if (reportModel.getPh() != 0 ) {
             reportModel.setPhStatus(classifyPh(reportModel.getPh()));
         }
-
         return reportModel;
     }
 
@@ -31,10 +29,4 @@ public class ProducerBusiness {
 
         return  phStatus;
     }
-
-    protected String classifyTurbidity()
-
-
-
-
 }

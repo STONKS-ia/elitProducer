@@ -1,6 +1,6 @@
-package com.br.elit.service;
+package com.br.elit.elitProducer.service;
 
-import com.br.elit.models.ReportModel;
+import com.br.elit.elitProducer.models.ReportModel;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

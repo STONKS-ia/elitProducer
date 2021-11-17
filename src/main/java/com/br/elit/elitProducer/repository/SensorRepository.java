@@ -1,6 +1,6 @@
-package com.br.elit.repository;
+package com.br.elit.elitProducer.repository;
 
-import com.br.elit.models.SensorModel;
+import com.br.elit.elitProducer.models.SensorModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
