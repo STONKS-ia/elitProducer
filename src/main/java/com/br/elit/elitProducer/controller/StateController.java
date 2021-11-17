@@ -47,7 +47,7 @@ public class StateController {
     public ResponseEntity<String> update(@PathVariable("id") int id, @RequestBody @Valid StateModel stateModel){
 
         stateModel.setId(id);
-        StateModel state = stateService.updateState(stateModel);
+        stateService.updateState(stateModel);
 
         return ResponseEntity.ok().header("Updated").body("State updated");
 

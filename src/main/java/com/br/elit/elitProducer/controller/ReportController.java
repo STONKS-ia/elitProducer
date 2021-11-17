@@ -1,5 +1,6 @@
 package com.br.elit.elitProducer.controller;
 
+import com.br.elit.elitProducer.exception.ApiException;
 import com.br.elit.elitProducer.models.ReportModel;
 import com.br.elit.elitProducer.service.ReportService;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +27,15 @@ public class ReportController {
         List<ReportModel> reports = reportService.getAll();
 
         return ResponseEntity.ok(reports);
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Return a report by id")
+    public ResponseEntity<ReportModel> findById(@PathVariable("id") int id) {
+
+        ReportModel report = reportService.getById(id);
+
+        return ResponseEntity.ok(report);
     }
 
     @PostMapping()

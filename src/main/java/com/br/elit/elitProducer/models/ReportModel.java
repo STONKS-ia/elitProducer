@@ -10,56 +10,67 @@ import java.util.Date;
 public class ReportModel {
 
     @Id
-    @Column
+    @Column(name = "REPORT_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REPORT_SEQUENCE")
     @SequenceGenerator(name = "REPORT_SEQUENCE", sequenceName = "REPORT_SEQ", allocationSize = 1)
     private int id;
 
-    @Column
+    @Column(name = "CREATION_AT")
     @NotNull(message = "The creation date is mandatory")
     private Date creationAt;
 
-    @Column
+    @Column(name = "PH")
     @Size(min = 1, max = 2, message = "The pH value must have 2 digits")
     private double ph;
 
-    @Column
+    @Column(name = "PH_STATUS")
     private String phStatus;
 
-    @Column
+    @Column(name = "TEMPERATURE")
     @Size(min = 1, max = 4, message = "The temperature must respect the following standard: '21.4'")
     private double temperature;
 
-    @Column
+    @Column(name = "TURBIDITY")
     @Size(min = 1, max = 1, message = "The turbidity must have at least 1 digit")
     private double turbidity;
 
-    @Column
+    @Column(name = "TURBIDITY_STATUS")
+    private String turbidityStatus;
+
+    @Column(name = "ALKALINITY")
     @Size(min = 1, max = 3, message = "The alkalinity value must have between 1-3 digits")
     private double alkalinity;
 
-    @Column
+    @Column(name = "ALKALINITY_STATUS")
+    private String alkalinityStatus;
+
+    @Column(name = "CHLORIDES")
     @Size(min = 1, max = 1, message = "")
     private String chlorides;
 
-    @Column
+    @Column(name = "COLIFORMS")
     @Size(min = 1, max = 1, message = "")
     private String coliforms;
 
-    @Column
+    @Column(name = "SEAWEED")
     @Size(min = 1, max = 1, message = "")
     private String seaweed;
 
-    public ReportModel(Date creationAt, double ph, double temperature, double turbidity, double alkalinity, String chlorides, String coliforms, String seaweed) {
+    @ManyToOne
+    @JoinColumn(name = "SENSOR_ID")
+    @NotNull(message = "The sensor related to this report is mandatory")
+    private SensorModel sensor;
+
+    public ReportModel(Date creationAt, double ph, double temperature, double turbidity, double alkalinity, String chlorides, String coliforms, String seaweed, SensorModel sensor) {
         this.creationAt = creationAt;
         this.ph = ph;
         this.temperature = temperature;
-
         this.turbidity = turbidity;
         this.alkalinity = alkalinity;
         this.chlorides = chlorides;
         this.coliforms = coliforms;
         this.seaweed = seaweed;
+        this.sensor = sensor;
     }
 
     public ReportModel() {
@@ -143,5 +154,18 @@ public class ReportModel {
 
     public void setSeaweed(String seaweed) {
         this.seaweed = seaweed;
+    }
+
+    public String getTurbidityStatus() {
+        return turbidityStatus;
+    }
+
+    public void setTurbidityStatus(String turbidityStatus) {
+        this.turbidityStatus= turbidityStatus;
+    }
+    public String getAlkalinityStatus(){return alkalinityStatus;}
+
+    public void setAlkalinityStatus(String alkalinityStatus){
+        this.alkalinityStatus = alkalinityStatus;
     }
 }

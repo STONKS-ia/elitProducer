@@ -1,5 +1,6 @@
 package com.br.elit.elitProducer.service;
 
+import com.br.elit.elitProducer.models.SensorModel;
 import com.br.elit.elitProducer.models.StateModel;
 import org.springframework.http.ResponseEntity;
 
@@ -13,7 +14,5 @@ public interface StateService {
     StateModel updateState(StateModel state);
     Optional<StateModel> getById(int id);
     ResponseEntity<Void> deleteById(int id);
-
-
 
 }

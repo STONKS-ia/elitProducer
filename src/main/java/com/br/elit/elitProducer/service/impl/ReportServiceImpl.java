@@ -21,6 +21,11 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    public ReportModel getById(int reportId) {
+        return reportRepository.getById(reportId);
+    };
+
+    @Override
     public ReportModel createReport(ReportModel report) {
         return reportRepository.save(report);
     }
