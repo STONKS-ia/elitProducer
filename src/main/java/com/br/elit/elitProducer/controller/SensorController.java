@@ -1,6 +1,7 @@
 package com.br.elit.elitProducer.controller;
 
 import com.br.elit.elitProducer.models.SensorModel;
+import com.br.elit.elitProducer.models.StateModel;
 import com.br.elit.elitProducer.service.SensorService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/sensor")
@@ -26,7 +28,15 @@ public class SensorController {
         List<SensorModel> sensor = sensorService.getAll();
 
         return ResponseEntity.ok(sensor);
+    }
 
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Return a sensor by id")
+    public ResponseEntity<Optional<SensorModel>> findById(@PathVariable("id") int id) {
+
+        Optional<SensorModel> state = sensorService.getById(id);
+
+        return ResponseEntity.ok(state);
     }
 
     @PostMapping()
@@ -35,7 +45,7 @@ public class SensorController {
         sensorService.createSensor(sensor);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(sensor.getId()).toUri();
+                .buildAndExpand(sensor.getSensorId()).toUri();
 
         return ResponseEntity.created(location).header("Created").body("Sensor created");
     }
@@ -43,7 +53,7 @@ public class SensorController {
     @PutMapping("/{id}")
     public ResponseEntity<String> update(@PathVariable("id") int id, @RequestBody @Valid SensorModel sensor){
 
-        sensor.setId(id);
+        sensor.setSensorId(id);
         sensorService.updateSensor(sensor);
 
         return ResponseEntity.ok().header("Updated").body("Sensor updated");

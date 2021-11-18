@@ -1,5 +1,6 @@
 package com.br.elit.elitProducer.service.impl;
 
+import com.br.elit.elitProducer.business.ProducerBusiness;
 import com.br.elit.elitProducer.models.ReportModel;
 import com.br.elit.elitProducer.repository.ReportRepository;
 import com.br.elit.elitProducer.service.ReportService;
@@ -15,6 +16,9 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportRepository reportRepository;
 
+    @Autowired
+    private ProducerBusiness producerBusiness;
+
     @Override
     public List<ReportModel> getAll() {
         return reportRepository.findAll();
@@ -27,11 +31,16 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public ReportModel createReport(ReportModel report) {
+
+        producerBusiness.applyBusiness(report);
         return reportRepository.save(report);
     }
 
     @Override
     public ReportModel updateReport(ReportModel report) {
+
+        producerBusiness.applyBusiness(report);
+
         return reportRepository.save(report);
     }
 

@@ -23,10 +23,8 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
-    public SensorModel getById(int id) {
-
-        return sensorRepository.getById(id);
-
+    public Optional<SensorModel> getById(int id) {
+        return sensorRepository.findById(id);
     }
 
     @Override

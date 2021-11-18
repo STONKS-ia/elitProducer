@@ -12,7 +12,7 @@ public class SensorModel {
     @Column(name = "SENSOR_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SENSOR_SEQUENCE")
     @SequenceGenerator(name = "SENSOR_SEQUENCE", sequenceName = "SENSOR_SEQ", allocationSize = 1)
-    private int id;
+    private int sensorId;
 
     @Column(name = "IS_ACTIVATED")
     @NotNull(message = "The is mandatory")
@@ -30,9 +30,8 @@ public class SensorModel {
     @Size(min = 1, max = 30, message = "The manufacturer name must have between 1 and 30 characters")
     private String manufacturer;
 
-    @ManyToOne
-    @JoinColumn(name = "STATE_ID")
-    @NotNull(message = "The state the sensor is in is mandatory")
+    @ManyToOne()
+    @JoinColumn(name = "STATE_ID", nullable = false)
     private StateModel state;
 
     public SensorModel(String serialNumber, String material, String manufacturer, StateModel state) {
@@ -45,12 +44,12 @@ public class SensorModel {
     public SensorModel() {
     }
 
-    public int getId() {
-        return id;
+    public int getSensorId() {
+        return sensorId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSensorId(int sensorId) {
+        this.sensorId = sensorId;
     }
 
     public String getSerialNumber() {
@@ -77,4 +76,19 @@ public class SensorModel {
         this.manufacturer = manufacturer;
     }
 
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
+    }
+
+    public StateModel getState() {
+        return state;
+    }
+
+    public void setState(StateModel state) {
+        this.state = state;
+    }
 }

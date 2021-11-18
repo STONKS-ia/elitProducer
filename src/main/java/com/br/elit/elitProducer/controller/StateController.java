@@ -1,5 +1,7 @@
 package com.br.elit.elitProducer.controller;
 
+import com.br.elit.elitProducer.exception.ApiBussinessException;
+import com.br.elit.elitProducer.models.ReportModel;
 import com.br.elit.elitProducer.models.StateModel;
 import com.br.elit.elitProducer.service.StateService;
 import io.swagger.annotations.ApiOperation;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/state")
@@ -26,12 +29,20 @@ public class StateController {
         List<StateModel> states = stateService.getAll();
 
         return ResponseEntity.ok(states);
+    }
 
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Return a state by id")
+    public ResponseEntity<Optional<StateModel>> findById(@PathVariable("id") int id) {
+
+        Optional<StateModel> state = stateService.getById(id);
+
+        return ResponseEntity.ok(state);
     }
 
     @PostMapping
     @ApiOperation(value = "Create a new state")
-    public ResponseEntity create(@RequestBody @Valid StateModel stateModel) {
+    public ResponseEntity create(@RequestBody @Valid StateModel stateModel) throws ApiBussinessException {
 
         StateModel state = stateService.createState(stateModel);
 

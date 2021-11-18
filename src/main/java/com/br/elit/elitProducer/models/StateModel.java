@@ -12,7 +12,7 @@ public class StateModel {
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STATE_SEQUENCE")
     @SequenceGenerator(name = "STATE_SEQUENCE", sequenceName = "STATE_SEQ", allocationSize = 1)
-    private int id;
+    private int stateId;
 
     @Column
     @NotNull(message = "The name of the state is mandatory")
@@ -38,11 +38,11 @@ public class StateModel {
     }
 
     public int getId() {
-        return id;
+        return stateId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.stateId = id;
     }
 
     public String getName() {

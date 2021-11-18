@@ -5,11 +5,12 @@ import com.br.elit.elitProducer.models.SensorModel;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SensorService {
 
     List<SensorModel> getAll();
-    SensorModel getById(int sensorId);
+    Optional<SensorModel> getById(int sensorId);
     SensorModel createSensor(SensorModel sensor);
     SensorModel updateSensor(SensorModel sensor);
     ResponseEntity<Void> deleteSensor(int sensorId);

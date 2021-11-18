@@ -26,10 +26,9 @@ public class StateServiceImpl implements StateService {
 
     @Override
     public Optional<StateModel> getById(int id) {
-        
         return stateRepository.findById(id);
-
     }
+
     @Override
     public StateModel createState(StateModel state) {
         return stateRepository.save(state);
@@ -45,5 +44,4 @@ public class StateServiceImpl implements StateService {
         stateRepository.deleteById(stateId);
         return null;
     }
-
 }

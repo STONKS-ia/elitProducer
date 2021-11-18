@@ -13,7 +13,7 @@ public class ReportModel {
     @Column(name = "REPORT_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REPORT_SEQUENCE")
     @SequenceGenerator(name = "REPORT_SEQUENCE", sequenceName = "REPORT_SEQ", allocationSize = 1)
-    private int id;
+    private int reportId;
 
     @Column(name = "CREATION_AT")
     @NotNull(message = "The creation date is mandatory")
@@ -77,11 +77,11 @@ public class ReportModel {
     }
 
     public int getId() {
-        return id;
+        return reportId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.reportId = id;
     }
 
     public Date getCreationAt() {
@@ -163,9 +163,11 @@ public class ReportModel {
     public void setTurbidityStatus(String turbidityStatus) {
         this.turbidityStatus= turbidityStatus;
     }
+
     public String getAlkalinityStatus(){return alkalinityStatus;}
 
     public void setAlkalinityStatus(String alkalinityStatus){
         this.alkalinityStatus = alkalinityStatus;
     }
+
 }
