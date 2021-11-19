@@ -3,12 +3,14 @@ package com.br.elit.elitProducer.business;
 import com.br.elit.elitProducer.models.ReportModel;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 public class ProducerBusiness {
 
     public ReportModel applyBusiness(ReportModel reportModel) {
 
-        if (reportModel.getPh() != 0 ) {
+        if (reportModel.getPh() != null ) {
             reportModel.setPhStatus(classifyPh(reportModel.getPh()));
         }
 
@@ -22,16 +24,16 @@ public class ProducerBusiness {
         return reportModel;
     }
 
-    protected String classifyPh(double ph){
+    protected String classifyPh(BigDecimal ph){
 
       String phStatus = null ;
 
-        if(ph >= 8 ){
+        if(ph.compareTo(BigDecimal.valueOf(8)) == 1 ){
             phStatus = "Alcalino" ;
 
-        }else if(ph >= 6){
+        }else if(ph.compareTo(BigDecimal.valueOf(6)) == 1){
             phStatus = "Neutro" ;
-        }else if(ph <= 5){
+        }else if(ph.compareTo(BigDecimal.valueOf(6)) == -1){
             phStatus = "Acido";
         }
 

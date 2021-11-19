@@ -1,8 +1,11 @@
 package com.br.elit.elitProducer.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -16,29 +19,28 @@ public class ReportModel {
     private int reportId;
 
     @Column(name = "CREATION_AT")
-    @NotNull(message = "The creation date is mandatory")
     private Date creationAt;
 
     @Column(name = "PH")
-    @Size(min = 1, max = 2, message = "The pH value must have 2 digits")
-    private double ph;
+    @DecimalMin(value = "0.5", message = "The pH value must be higher than 0.5")
+    @DecimalMax(value = "14", message = "The pH value must be lower than 14")
+    private BigDecimal ph;
 
     @Column(name = "PH_STATUS")
     private String phStatus;
 
     @Column(name = "TEMPERATURE")
-    @Size(min = 1, max = 4, message = "The temperature must respect the following standard: '21.4'")
     private double temperature;
 
     @Column(name = "TURBIDITY")
-    @Size(min = 1, max = 1, message = "The turbidity must have at least 1 digit")
+    @DecimalMin(value = "1", message = "The turbidity must have at least 1 digit")
     private double turbidity;
 
     @Column(name = "TURBIDITY_STATUS")
     private String turbidityStatus;
 
     @Column(name = "ALKALINITY")
-    @Size(min = 1, max = 3, message = "The alkalinity value must have between 1-3 digits")
+    @DecimalMin(value = "1", message = "The alkalinity value must have between 1-3 digits")
     private double alkalinity;
 
     @Column(name = "ALKALINITY_STATUS")
@@ -49,19 +51,14 @@ public class ReportModel {
     private String chlorides;
 
     @Column(name = "COLIFORMS")
-    @Size(min = 1, max = 1, message = "")
+    @Size(min = 1, max = 10, message = "")
     private String coliforms;
 
-    @Column(name = "SEAWEED")
-    @Size(min = 1, max = 1, message = "")
-    private String seaweed;
-
     @ManyToOne
-    @JoinColumn(name = "SENSOR_ID")
-    @NotNull(message = "The sensor related to this report is mandatory")
+    @JoinColumn(name = "SENSOR_ID", nullable = false)
     private SensorModel sensor;
 
-    public ReportModel(Date creationAt, double ph, double temperature, double turbidity, double alkalinity, String chlorides, String coliforms, String seaweed, SensorModel sensor) {
+    public ReportModel(Date creationAt, BigDecimal ph, double temperature, double turbidity, double alkalinity, String chlorides, String coliforms, SensorModel sensor) {
         this.creationAt = creationAt;
         this.ph = ph;
         this.temperature = temperature;
@@ -69,7 +66,6 @@ public class ReportModel {
         this.alkalinity = alkalinity;
         this.chlorides = chlorides;
         this.coliforms = coliforms;
-        this.seaweed = seaweed;
         this.sensor = sensor;
     }
 
@@ -92,12 +88,12 @@ public class ReportModel {
         this.creationAt = creationAt;
     }
 
-    public double getPh() {
+    public BigDecimal getPh() {
         return ph;
     }
 
-    public void setPh(double temperature) {
-        this.temperature = ph;
+    public void setPh(BigDecimal ph) {
+        this.ph = ph;
     }
 
     public String getPhStatus(){
@@ -148,14 +144,6 @@ public class ReportModel {
         this.coliforms = coliforms;
     }
 
-    public String getSeaweed() {
-        return seaweed;
-    }
-
-    public void setSeaweed(String seaweed) {
-        this.seaweed = seaweed;
-    }
-
     public String getTurbidityStatus() {
         return turbidityStatus;
     }
@@ -168,6 +156,14 @@ public class ReportModel {
 
     public void setAlkalinityStatus(String alkalinityStatus){
         this.alkalinityStatus = alkalinityStatus;
+    }
+
+    public SensorModel getSensor() {
+        return sensor;
+    }
+
+    public void setSensor(SensorModel sensor) {
+        this.sensor = sensor;
     }
 
 }
