@@ -1,5 +1,6 @@
 package com.br.elit.elitProducer.controller;
 
+import com.br.elit.elitProducer.models.ReportModel;
 import com.br.elit.elitProducer.models.SensorModel;
 import com.br.elit.elitProducer.models.StateModel;
 import com.br.elit.elitProducer.service.SensorService;
@@ -30,6 +31,14 @@ public class SensorController {
         return ResponseEntity.ok(sensor);
     }
 
+    @GetMapping
+    @ApiOperation(value = "Return a filtered list with all sensors")
+    public ResponseEntity<List<SensorModel>> getAllByFilter(@RequestParam int sensorId,@RequestParam  String material,@RequestParam  String serialNumber,@RequestParam  String manufacturer) {
+
+        List<SensorModel> sensor = sensorService.getAllByFilter(sensorId, material, serialNumber, manufacturer);
+
+        return ResponseEntity.ok(sensor);
+    }
     @GetMapping("/{id}")
     @ApiOperation(value = "Return a sensor by id")
     public ResponseEntity<Optional<SensorModel>> findById(@PathVariable("id") int id) {

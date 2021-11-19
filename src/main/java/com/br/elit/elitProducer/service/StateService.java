@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface StateService {
 
     List<StateModel> getAll();
+    List<StateModel> getAllByFilter(int stateId, String name, String acronymState, String region);
     StateModel createState(StateModel state);
     StateModel updateState(StateModel state);
     Optional<StateModel> getById(int id);

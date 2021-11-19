@@ -30,7 +30,14 @@ public class StateController {
 
         return ResponseEntity.ok(states);
     }
+    @GetMapping
+    @ApiOperation(value = "Return a filtered list with all states")
+    public ResponseEntity<List<StateModel>> getAllByFilter(@RequestParam int stateId, @RequestParam String name,@RequestParam String acronymState,@RequestParam String region) {
 
+        List<StateModel> state = stateService.getAllByFilter(stateId, name, acronymState, region);
+
+        return ResponseEntity.ok(state);
+    }
     @GetMapping("/{id}")
     @ApiOperation(value = "Return a state by id")
     public ResponseEntity<Optional<StateModel>> findById(@PathVariable("id") int id) {

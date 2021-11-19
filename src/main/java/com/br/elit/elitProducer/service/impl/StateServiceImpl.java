@@ -1,5 +1,6 @@
 package com.br.elit.elitProducer.service.impl;
 
+import com.br.elit.elitProducer.models.SensorModel;
 import com.br.elit.elitProducer.models.StateModel;
 import com.br.elit.elitProducer.repository.StateRepository;
 import com.br.elit.elitProducer.service.StateService;
@@ -24,6 +25,17 @@ public class StateServiceImpl implements StateService {
         return stateRepository.findAll();
     }
 
+    @Override
+    public List<StateModel> getAllByFilter(int stateId, String name, String acronymState, String region) {
+        if(name.isEmpty())
+            name = null;
+        if(acronymState.isEmpty())
+            acronymState = null;
+        if(region.isEmpty())
+            region = null;
+
+        return stateRepository.findAllFilter(stateId, name, acronymState, region);
+    }
     @Override
     public Optional<StateModel> getById(int id) {
         return stateRepository.findById(id);

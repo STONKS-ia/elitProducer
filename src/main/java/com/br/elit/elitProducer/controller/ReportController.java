@@ -4,12 +4,14 @@ import com.br.elit.elitProducer.exception.ApiException;
 import com.br.elit.elitProducer.models.ReportModel;
 import com.br.elit.elitProducer.service.ReportService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 
@@ -28,7 +30,14 @@ public class ReportController {
 
         return ResponseEntity.ok(reports);
     }
+    @GetMapping
+    @ApiOperation(value = "Return a filtered list with all reports")
+    public ResponseEntity<List<ReportModel>> getAllByFilter(@RequestParam int reportId, @RequestParam String phStatus, @RequestParam String turbidityStatus, @RequestParam String alkalinityStatus) {
 
+        List<ReportModel> reports = reportService.getAllByFilter(reportId, phStatus, turbidityStatus, alkalinityStatus);
+
+        return ResponseEntity.ok(reports);
+    }
     @GetMapping("/{id}")
     @ApiOperation(value = "Return a report by id")
     public ResponseEntity<ReportModel> findById(@PathVariable("id") int id) {

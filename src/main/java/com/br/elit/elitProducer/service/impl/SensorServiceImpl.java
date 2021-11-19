@@ -23,6 +23,18 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public List<SensorModel> getAllByFilter(int sensorId,String material,String serialNumber,String manufacturer) {
+        if(material.isEmpty())
+            material = null;
+        if(serialNumber.isEmpty())
+            serialNumber = null;
+        if(manufacturer.isEmpty())
+            manufacturer = null;
+
+        return sensorRepository.findAllFilter(sensorId, material, serialNumber, manufacturer);
+    }
+
+    @Override
     public Optional<SensorModel> getById(int id) {
         return sensorRepository.findById(id);
     }

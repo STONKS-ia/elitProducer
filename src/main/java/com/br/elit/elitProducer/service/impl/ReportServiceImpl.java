@@ -25,6 +25,18 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    public List<ReportModel> getAllByFilter(int reportId, String phStatus,String turbidityStatus,String alkalinityStatus) {
+        if(phStatus.isEmpty())
+            phStatus = null;
+        if(turbidityStatus.isEmpty())
+            turbidityStatus = null;
+        if(alkalinityStatus.isEmpty())
+            alkalinityStatus = null;
+
+        return reportRepository.findAllFilter(reportId, phStatus, turbidityStatus, alkalinityStatus);
+    }
+
+    @Override
     public ReportModel getById(int reportId) {
         return reportRepository.getById(reportId);
     };
