@@ -30,7 +30,7 @@ public class StateController {
 
         return ResponseEntity.ok(states);
     }
-    @GetMapping
+    @GetMapping("/filter")
     @ApiOperation(value = "Return a filtered list with all states")
     public ResponseEntity<List<StateModel>> getAllByFilter(@RequestParam int stateId, @RequestParam String name,@RequestParam String acronymState,@RequestParam String region) {
 

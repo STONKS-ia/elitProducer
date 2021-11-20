@@ -30,7 +30,7 @@ public class ReportController {
 
         return ResponseEntity.ok(reports);
     }
-    @GetMapping
+    @GetMapping("/filter")
     @ApiOperation(value = "Return a filtered list with all reports")
     public ResponseEntity<List<ReportModel>> getAllByFilter(@RequestParam int reportId, @RequestParam String phStatus, @RequestParam String turbidityStatus, @RequestParam String alkalinityStatus) {
 
