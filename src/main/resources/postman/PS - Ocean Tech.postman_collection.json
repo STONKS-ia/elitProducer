@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "505c6f7c-01f2-4a2e-8f00-a62c5dc6297b",
+		"name": "PS - Ocean Tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "State",
+			"item": [
+				{
+					"name": "Create a state",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Para\",\r\n    \"acronymState\": \"PA\",\r\n    \"region\": \"Norte\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/state",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"state"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all states",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/state",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"state"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "State by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/state/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"state",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update state By ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rio De Janeiro\",\r\n    \"acronymState\": \"RJ\",\r\n    \"region\": \"Sudeste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/state/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"state",
+								"1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete state",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/state/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"state",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor",
+			"item": [
+				{
+					"name": "Create a sensor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \t\"isActivated\": true,\r\n\t\t\"serialNumber\": 9264,\r\n\t\t\"material\": \"Aço\",\r\n\t\t\"manufacturer\": \"odio.\",\r\n    \"state\": {\r\n        \"id\": 7\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/sensor",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all sensors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/sensor",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sensor by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/sensor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"sensor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update sensor by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"serialNumber\": \"4645\",\r\n        \"material\": \"plástico\",\r\n        \"manufacturer\": \"XPTO\",\r\n        \"state\": {\r\n            \"id\": 1\r\n        },\r\n        \"activated\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/sensor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"sensor",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete state",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/sensor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"sensor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Create a report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ph\": 3.41,\r\n\t\t\"temperature\": 93.77,\r\n\t\t\"turbidity\": 102,\r\n\t\t\"alkalinity\": 164,\r\n\t\t\"chlorides\": \"N\",\r\n\t\t\"coliforms\": \"Médio\",\r\n    \"sensor\": {\r\n        \"sensorId\": 1\r\n    }\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/report",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all reports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/report",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/report/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"report",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update report by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ph\": 11,\r\n    \"temperature\": 22,\r\n    \"turbidity\": 4,\r\n    \"alkalinity\": 100,\r\n    \"chlorides\": \"Y\",\r\n    \"coliforms\": \"Médio\",\r\n    \"sensor\": {\r\n        \"sensorId\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/elitProducer/report/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"report",
+								"1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete report",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/elitProducer/report/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"elitProducer",
+								"report",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
