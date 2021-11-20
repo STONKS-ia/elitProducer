@@ -31,7 +31,7 @@ public class SensorController {
         return ResponseEntity.ok(sensor);
     }
 
-    @GetMapping
+    @GetMapping("/filter")
     @ApiOperation(value = "Return a filtered list with all sensors")
     public ResponseEntity<List<SensorModel>> getAllByFilter(@RequestParam int sensorId,@RequestParam  String material,@RequestParam  String serialNumber,@RequestParam  String manufacturer) {
 
